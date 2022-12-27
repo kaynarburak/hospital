@@ -30,7 +30,7 @@ require_once 'sidebar.php';
                     <!-- general form elements -->
                     <div class="card card-success">
                         <div class="card-header">
-                            <h3 class="card-title">Doktor Ekle</h3>
+                            <h3 class="card-title">Muayene Oluştur</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->

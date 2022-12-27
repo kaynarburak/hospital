@@ -7,11 +7,11 @@ include 'sidebar.php';
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Doktorlar</h1>
+                        <h1 class="m-0">Muayene</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="index.php">Doktorlar</a></li>
+                            <li class="breadcrumb-item"><a href="index.php">Muayene</a></li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -23,36 +23,37 @@ include 'sidebar.php';
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <a href="doktorAdd.php"> <button style="float:right" class="btn btn-success ">Yeni Doktor Ekle</button></a>
+                                <a href="muayeneAdd.php">
+                                    <button style="float:right" class="btn btn-success ">Yeni Muayene Oluştur</button>
+                                </a>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <table class="table table-bordered">
                                     <thead>
                                     <tr>
-                                        <th style="width: 10px">Doktor ID</th>
+                                        <th style="width: 10px">Muayene ID</th>
+                                        <th>Hasta Adı</th>
+                                        <th>Soyadı Soyadı</th>
+                                        <th>Hasta T.C.No</th>
                                         <th>Doktor Adı</th>
                                         <th>Doktor Soyadı</th>
-                                        <th>Hasta Adı</th>
-                                        <th>Hasta Soyadı</th>
-                                        <th>Hasta T.C. Kimlik Numarası</th>
-                                        <th>Tarih</th>
-                                        <th>Saat</th>
-                                        <th>Randevu</th>
+                                        <th>Doktor T.C.No</th>
                                     </tr>
                                     </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>Doktor ID</td>
-                                        <td>Doktor Adı</td>
-                                        <td>Doktor Soyadı</td>
-                                        <td>Doktor T.C. Kimlik Numarası</td>
-                                        <td>Doğum Tarihi</td>
-                                        <td>Anne Adı</td>
-                                        <td>Baba Adı</td>
-                                        <td>Cep Numarası</td>
-                                        <td>Bölüm</td>
-                                    </tr>
+                                    <tbody><?php
+                                    $muayeneSor = $db->query('select m.muayene_id,d.d_adi,d.d_soyadi,h.adi,h.soyadi,h.tcno,d.d_tcno from muayene m,hasta h,doktor d where m.hasta_id=h.hasta_id and m.doktor_id=d.doktor_id');
+                                    while ($muayeneCek = $muayeneSor->fetch(PDO::FETCH_ASSOC)) { ?>
+                                        <tr>
+                                            <td><?php echo $muayeneCek['muayene_id'] ?></td>
+                                            <td><?php echo $muayeneCek['adi'] ?></td>
+                                            <td><?php echo $muayeneCek['soyadi'] ?></td>
+                                            <td><?php echo $muayeneCek['tcno'] ?></td>
+                                            <td><?php echo $muayeneCek['d_adi'] ?></td>
+                                            <td><?php echo $muayeneCek['d_soyadi'] ?></td>
+                                            <td><?php echo $muayeneCek['d_tcno'] ?></td>
+                                        </tr>
+                                    <?php } ?>
                                     </tbody>
                                 </table>
                             </div>

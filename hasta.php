@@ -45,6 +45,7 @@ include 'sidebar.php';
 
                                     </tr>
                                     </thead>
+                                    <tbody>
                                     <?php
                                     $hastaSor = $db->query('Select * from hasta');
                                     while ($hastaCek = $hastaSor->fetch(PDO::FETCH_ASSOC)) { ?>

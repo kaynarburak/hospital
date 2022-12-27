@@ -7,7 +7,7 @@ if (isset($_POST['muayeneInsert'])) {
     $saat = $_POST['saat'];
 
 
-    $stmt = $db->prepare('INSERT INTO "muayene"(doktor_id, hasta_id, tarih,saat,randevulumu) VALUES(:doktor_id,:hasta_id,:tarih,:saat,"true")');
+    $stmt = $db->prepare('INSERT INTO "muayene"(doktor_id, hasta_id, tarih,saat) VALUES(:doktor_id,:hasta_id,:tarih,:saat)');
     $stmt->execute([
         'doktor_id' => $doktor_id,
         'hasta_id' => $hasta_id,
