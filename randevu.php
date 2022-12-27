@@ -45,8 +45,9 @@ include 'sidebar.php';
 
                                     </tr>
                                     </thead>
+                                    <tbody>
                                     <?php
-                                    $randevuSor = $db->query('select * from randevu r,hasta h,doktor d where r.doktor_id=d.doktor_id and h.hasta_id=r.hasta_id and durum=false');
+                                    $randevuSor = $db->query('select * from randevu r,hasta h,doktor d where r.doktor_id=d.doktor_id and h.hasta_id=r.hasta_id and r.durum=false');
                                     while ($randevuCek = $randevuSor->fetch(PDO::FETCH_ASSOC)) { ?>
                                         <tr>
                                             <td><?php echo $randevuCek['randevu_id'] ?></td>
