@@ -7,11 +7,11 @@ include 'sidebar.php';
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Doktorlar</h1>
+                        <h1 class="m-0">Muayene</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="index.php">Doktorlar</a></li>
+                            <li class="breadcrumb-item"><a href="index.php">Anasayfa</a></li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -23,14 +23,16 @@ include 'sidebar.php';
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <a href="doktorAdd.php"> <button style="float:right" class="btn btn-success ">Yeni Doktor Ekle</button></a>
+                                <a href="muayeneAdd.php">
+                                    <button style="float:right" class="btn btn-success ">Yeni Muayene Oluştur</button>
+                                </a>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <table class="table table-bordered">
                                     <thead>
                                     <tr>
-                                        <th style="width: 10px">Doktor ID</th>
+                                        <th style="width: 10px">Muayene ID</th>
                                         <th>Doktor Adı</th>
                                         <th>Doktor Soyadı</th>
                                         <th>Hasta Adı</th>
@@ -42,17 +44,21 @@ include 'sidebar.php';
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td>Doktor ID</td>
-                                        <td>Doktor Adı</td>
-                                        <td>Doktor Soyadı</td>
-                                        <td>Doktor T.C. Kimlik Numarası</td>
-                                        <td>Doğum Tarihi</td>
-                                        <td>Anne Adı</td>
-                                        <td>Baba Adı</td>
-                                        <td>Cep Numarası</td>
-                                        <td>Bölüm</td>
-                                    </tr>
+                                    <?php
+                                    $muayeneSor = $db->query('SELECT * FROM "muayene"');
+                                    while ($muayeneCek = $muayeneSor->fetch(PDO::FETCH_ASSOC)) { ?>
+                                        <tr>
+                                            <td><?php echo $muayeneCek['muayene_id'] ?></td>
+                                            <td><?php echo $muayeneCek['muayene_adi'] ?></td>
+                                            <td><?php echo $muayeneCek['muayene_sifre'] ?></td>
+                                            <td><?php echo $muayeneCek['muayene_yetki'] ?></td>
+                                            <td>
+                                                <a href="process/muayenesil.php?muayene_id=<?php echo $muayeneCek['muayene_id'] ?>">
+                                                    <button class="btn btn-danger">Sil</button>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    <?php } ?>
                                     </tbody>
                                 </table>
                             </div>
