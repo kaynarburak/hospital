@@ -33,21 +33,23 @@ include 'sidebar.php';
                                         <th>Hasta T.C. Kimlik Numarası</th>
                                         <th>Tarih</th>
                                         <th>Saat</th>
-                                        <th>Doktor</th>
+                                        <th>Doktor Adı</th>
+                                        <th>Doktor Soyadı</th>
 
                                     </tr>
                                     </thead>
                                     <?php
-                                    $randevuSor = $db->query('select * from randevu where durum=true');
+                                    $randevuSor = $db->query('select * from randevu r,hasta h,doktor d where r.doktor_id=d.doktor_id and h.hasta_id=r.hasta_id and durum=false');
                                     while ($randevuCek = $randevuSor->fetch(PDO::FETCH_ASSOC)) { ?>
                                         <tr>
                                             <td><?php echo $randevuCek['randevu_id'] ?></td>
-                                            <td><?php echo $randevuCek['hasta_adi'] ?></td>
-                                            <td><?php echo $randevuCek['hasta_soyadi'] ?></td>
-                                            <td><?php echo $randevuCek['hasta_tc'] ?></td>
+                                            <td><?php echo $randevuCek['adi'] ?></td>
+                                            <td><?php echo $randevuCek['soyadi'] ?></td>
+                                            <td><?php echo $randevuCek['tcno'] ?></td>
                                             <td><?php echo $randevuCek['tarih'] ?></td>
                                             <td><?php echo $randevuCek['saat'] ?></td>
-                                            <td><?php echo $randevuCek['doktor_id'] ?></td>
+                                            <td><?php echo $randevuCek['d_adi'] ?></td>
+                                            <td><?php echo $randevuCek['d_soyadi'] ?></td>
                                         </tr>
                                     <?php } ?>
                                     </tbody>

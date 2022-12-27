@@ -36,6 +36,13 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="hasta.php" class="nav-link">
+                        <p>
+                            Hastalar
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="doktorlar.php" class="nav-link">
                         <p>
                             Doktorlar
